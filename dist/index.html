@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Fibonacci Calculator</title>
+
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css" media="screen,projection"/>
+
+    <script src="js/script.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m12">
+            <ul class="tabs">
+                <li class="tab col s3"><a href="#f_tab">Fibonacci</a></li>
+                <li class="tab col s3"><a href="#cg_tab">Gutter & Columns</a></li>
+                <!--<li class="tab col s3"><a href="#calc">Calc</a></li>-->
+            </ul>
+            <div id="f_tab" class="col s12">
+                <div class="section">
+                    <div id="f_up_series_container"></div>
+                    <input placeholder="" value="1" id="fibonacci_value" type="text">
+                    <div id="f_down_series_container"></div>
+                </div>
+
+            </div>
+            <div id="cg_tab" class="col s12">
+                <div>
+                    <label for="total_width">Total Wight</label><input id="total_width" type="text" value="1000"/>
+                </div>
+                <div>
+                    <label for="column">Column</label><input id="column" type="text" value="10"/>
+                </div>
+                <div>
+                    <label for="column_width">Column Width</label><input id="column_width" type="text" value="95.5"/>
+                </div>
+                <div>
+                    <label for="gutter">Gutter</label><input id="gutter" type="text" value="9"/>
+                </div>
+                <div>
+                    <label for="gutter_width">Gutter Width</label><input id="gutter_width" type="text" value="5" />
+                </div>
+                <div id="width_result"></div>
+            </div>
+            <!--<div id="calc" class="col s12">
+
+                <input placeholder="" id="" type="text">
+                <input placeholder="" id="" type="text">
+            </div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>
