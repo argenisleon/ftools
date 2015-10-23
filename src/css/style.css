@@ -1,16 +1,33 @@
 body {
     background: #ee6e73;
 }
+
 #f_up_series_container, #f_down_series_container {
     cursor: pointer;
 }
 
-#f_up_series_container, #fibonacci_value, #f_down_series_container {
+#f_up_series_container, #start_value, #f_down_series_container {
     text-align: center;
 }
+
 .container {
     background: #ffffff;
 }
+
 .section {
     padding: 20px;
+}
+
+.main_number {
+    font-size: 21px;
+}
+
+.minus_third {
+    font-size: 13px;
+    color: #aaaaaa;
+    font-weight: 300;
+}
+
+input{
+    font-size: 21px !important;
 }

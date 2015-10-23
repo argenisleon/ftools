@@ -6,20 +6,20 @@ function NaN_to_Zero(value) {
 }
 
 $(document).ready(function () {
-    var golden_number = 1.618;
+    var golden_number = 1.6180339887498948420;
 
     // Just make the first fibonacci calculation
     calculate_fibonacci();
 
-    $('#fibonacci_value').keydown(function (e) {
+    $('#start_value').keydown(function (e) {
 
         switch (e.which) {
             case 38: // up
-                $('#fibonacci_value').val(Math.round($('#fibonacci_value').val() * golden_number));
+                $('#start_value').val(Math.round($('#start_value').val() * golden_number));
                 calculate_fibonacci();
                 break;
             case 40: // down
-                $('#fibonacci_value').val(Math.round($('#fibonacci_value').val() / golden_number));
+                $('#start_value').val(Math.round($('#start_value').val() / golden_number));
                 calculate_fibonacci();
                 break;
 
@@ -29,15 +29,15 @@ $(document).ready(function () {
         e.preventDefault(); // prevent the default action (scroll / move caret)
     });
 
-    $('#fibonacci_value').on('input', function () {
+    $('#start_value').on('input', function () {
         // Just accept numbers
         this.value = this.value.replace(/[^0-9\.]/g, '');
         calculate_fibonacci();
 
 
     });
-    $('#f_up_series_container, #f_down_series_container').click(function(e){
-        $('#fibonacci_value').val(($(e.target).html()));
+    $('#f_up_series_container, #f_down_series_container').click(function (e) {
+        $('#start_value').val(($(e.target).html()));
         calculate_fibonacci();
         e.stopPropagation();
 
@@ -83,22 +83,29 @@ $(document).ready(function () {
 
 
     }
+
     // Calculate de Fibonacci Serie
     function calculate_fibonacci() {
         var serie_length = 7;
-        var original_value = $('#fibonacci_value').val();
+        var original_value = $('#start_value').val();
         $("#f_down_series_container").empty();
         $("#f_up_series_container").empty();
 
 
         for (var i = 1; i <= serie_length; i++) {
-            secuence_value = Math.pow(golden_number, i);
-            $("#f_down_series_container").append("<div>" + Math.round(original_value / secuence_value) + "</div>");
+            secuence_value = Math.round(original_value / Math.pow(golden_number, i));
+            secuence_value_e = Math.round(original_value / Math.pow(golden_number, i - 3));
+
+            $("#f_down_series_container").append("<div><span class='main_number'>" + secuence_value + "</span>" +
+                "</div>");
         }
 
         for (var i = serie_length; i >= 1; i--) {
-            secuence_value = Math.pow(golden_number, i);
-            $("#f_up_series_container").append("<div>" + Math.round(original_value * secuence_value) + "</div>");
+            secuence_value = Math.round(original_value * Math.pow(golden_number, i));
+            secuence_value_e = Math.round(original_value * Math.pow(golden_number, i - 3));
+
+            $("#f_up_series_container").append("<div><span class='main_number'>" + secuence_value + "</span>" +
+                "<span class='minus_third'>" + (secuence_value - secuence_value_e) + "</span></div>");
         }
     }
 });
