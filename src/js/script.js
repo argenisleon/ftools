@@ -6,21 +6,28 @@ function NaN_to_Zero(value) {
 }
 
 $(document).ready(function () {
+    // Calculo del parametro n de fibonacci
+    // http://www.math.rutgers.edu/~erowland/fibonacci.html
     var golden_number = 1.6180339887498948420;
 
     // Just make the first fibonacci calculation
     calculate_fibonacci();
+    calculate_multiplier
 
     $('#start_value').keydown(function (e) {
+        var value = $('#start_value').val();
 
         switch (e.which) {
+
             case 38: // up
-                $('#start_value').val(Math.round($('#start_value').val() * golden_number));
+                $('#start_value').val(Math.round(value * golden_number));
                 calculate_fibonacci();
+                calculate_multiplier();
                 break;
             case 40: // down
-                $('#start_value').val(Math.round($('#start_value').val() / golden_number));
+                $('#start_value').val(Math.round(value / golden_number));
                 calculate_fibonacci();
+                calculate_multiplier();
                 break;
 
             default:
@@ -33,12 +40,14 @@ $(document).ready(function () {
         // Just accept numbers
         this.value = this.value.replace(/[^0-9\.]/g, '');
         calculate_fibonacci();
+        calculate_multiplier();
 
 
     });
     $('#f_up_series_container, #f_down_series_container').click(function (e) {
         $('#start_value').val(($(e.target).html()));
         calculate_fibonacci();
+        calculate_multiplier();
         e.stopPropagation();
 
     })
@@ -52,6 +61,23 @@ $(document).ready(function () {
     $('#gutter_width').on('input', calculate_column);
 
     // Functions
+    function calculate_multiplier() {
+        value = $('#start_value').val();
+
+        $('#multiplier').empty();
+
+        for (var i = 0; i <= 10; i++) {
+            multiplier = ((i / 10) + 1);
+            temp = value * multiplier;
+
+            // if float use only two float numbers
+            if (temp % 1 !== 0) {
+                temp = temp.toFixed(2)
+            }
+            $('#multiplier').append('<div class="multiplier_container"><div class="multiplier">' + multiplier + '</div><div>' + temp + '</div></div>');
+        }
+    }
+
     function calculate_gutter() {
         total_width = parseInt($('#total_width').val());
         column = parseFloat($('#column').val());
