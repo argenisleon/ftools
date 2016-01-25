@@ -28,6 +28,17 @@ body {
     font-weight: 300;
 }
 
-input{
+input {
     font-size: 21px !important;
+}
+
+.multiplier {
+    font-size: 10px;
+    color: #aaaaaa;
+}
+
+.multiplier_container {
+    float: left;
+    padding: 5px 0;
+    width: 9%;
 }

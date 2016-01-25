@@ -44,13 +44,15 @@ $(document).ready(function () {
 
 
     });
-    $('#f_up_series_container, #f_down_series_container').click(function (e) {
+    $('#f_up_series_container, #f_down_series_container').on('click', 'span', function (e) {
+
+        e.stopPropagation();
         $('#start_value').val(($(e.target).html()));
         calculate_fibonacci();
         calculate_multiplier();
-        e.stopPropagation();
 
-    })
+
+    });
 
 
     $('#total_width').on('input', calculate_gutter);
